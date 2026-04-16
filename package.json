@@ -1,0 +1,12 @@
+{
+  "name": "medisync-root",
+  "version": "1.0.0",
+  "description": "Root package to run all projects",
+  "scripts": {
+    "install-all": "npm install --prefix backend && npm install --prefix frontend && npm install --prefix admin",
+    "start": "concurrently \"npm run start --prefix backend\" \"npm run dev --prefix frontend\" \"npm run dev --prefix admin\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

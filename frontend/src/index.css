@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    font-family: 'Outfit', sans-serif;
+    @apply transition-colors duration-200;
+}
+
+body {
+    @apply bg-bg-main text-dark-main antialiased scroll-smooth;
+}
+
+.glass-card {
+    @apply bg-glass-white backdrop-blur-md border border-white/20 shadow-premium;
+}
+
+.glass-dark {
+    @apply bg-glass-dark backdrop-blur-xl border border-white/10 shadow-premium;
+}
+
+.text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent to-indigo-400;
+}
+
+.active hr {
+    @apply block border-accent
+}
+
+@media (max-width:740px) {
+    .active p {
+       @apply text-white bg-accent
+    }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-slate-100;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 rounded-full hover:bg-slate-400 border-2 border-slate-100;
+}
+
+::selection {
+    @apply bg-accent/30 text-primary;
+}
