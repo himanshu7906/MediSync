@@ -47,8 +47,19 @@ const addDoctor = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    const imageUpload = await cloudinary.uploader.upload(imageFile.path, { resource_type: "image" });
-    const imageUrl = imageUpload.secure_url;
+    // Upload image to Cloudinary only if a file was provided AND Cloudinary is configured
+    let imageUrl = 'https://res.cloudinary.com/demo/image/upload/v1/docs/models/doctor-placeholder.png';
+
+    if (imageFile) {
+      if (!process.env.CLOUDINARY_API_KEY || process.env.CLOUDINARY_API_KEY === 'your_key') {
+        return res.status(400).json({
+          success: false,
+          message: 'Cloudinary is not configured. Please add CLOUDINARY_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_SECRET_KEY to backend/.env, or submit without an image.'
+        });
+      }
+      const imageUpload = await cloudinary.uploader.upload(imageFile.path, { resource_type: 'image' });
+      imageUrl = imageUpload.secure_url;
+    }
 
     const doctorData = {
       name,

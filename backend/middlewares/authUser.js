@@ -15,8 +15,8 @@ const authUser = async (req, res, next) => {
         req.body.userId = token_decode.id
         next()
     } catch (error) {
-        console.log(error)
-        res.json({ success: false, message: error.message })
+        // Invalid/expired token — tell client to clear token and re-login
+        res.json({ success: false, message: 'Session expired. Please log in again.' })
     }
 }
 
