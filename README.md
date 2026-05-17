@@ -64,6 +64,8 @@ CLOUDINARY_SECRET_KEY=your_secret
 CLOUDINARY_NAME=your_name
 ADMIN_EMAIL=admin@medisync.com
 ADMIN_PASSWORD=admin123
+RAZORPAY_KEY_ID=your_razorpay_key_id
+RAZORPAY_KEY_SECRET=your_razorpay_key_secret
 ```
 **Start Backend:** `npm start`
 
