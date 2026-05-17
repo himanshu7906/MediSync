@@ -56,9 +56,10 @@ npm install
 ```
 Create a `.env` file in the `backend` folder:
 ```env
-MONGODB_URI=your_mongodb_uri
+
+MONGODB_URI=mongodb://localhost:27017
 CURRENCY=USD
-JWT_SECRET=your_secret_key
+JWT_SECRET=medisync_jwt_super_secret_2024_xK9pL3mN
 CLOUDINARY_API_KEY=your_key
 CLOUDINARY_SECRET_KEY=your_secret
 CLOUDINARY_NAME=your_name
@@ -66,6 +67,7 @@ ADMIN_EMAIL=admin@medisync.com
 ADMIN_PASSWORD=admin123
 RAZORPAY_KEY_ID=your_razorpay_key_id
 RAZORPAY_KEY_SECRET=your_razorpay_key_secret
+
 ```
 **Start Backend:** `npm start`
 
