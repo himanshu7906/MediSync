@@ -22,14 +22,14 @@
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology |
-|---|---|
+| Layer            | Technology                                        |
+| ---------------- | ------------------------------------------------- |
 | Frontend & Admin | React.js (Vite), Tailwind CSS, GSAP, React Router |
-| Backend | Node.js, Express.js |
-| Database | MongoDB (local or Atlas) |
-| Image Storage | Cloudinary |
-| Payments | Razorpay |
-| Auth | JWT (JSON Web Tokens) |
+| Backend          | Node.js, Express.js                               |
+| Database         | MongoDB (local or Atlas)                          |
+| Image Storage    | Cloudinary                                        |
+| Payments         | Razorpay                                          |
+| Auth             | JWT (JSON Web Tokens)                             |
 
 ---
 
@@ -156,27 +156,30 @@ Admin panel runs at **http://localhost:5174**
 
 ## 🔑 User Roles & Access
 
-| Role | URL | Credentials |
-|---|---|---|
-| **Patient** | http://localhost:5173 | Register via Sign Up page |
-| **Admin** | http://localhost:5174 | Email & password from `backend/.env` (`ADMIN_EMAIL` / `ADMIN_PASSWORD`) |
-| **Doctor** | http://localhost:5174 | Login with credentials set by Admin when adding a doctor |
+| Role        | URL                   | Credentials                                                             |
+| ----------- | --------------------- | ----------------------------------------------------------------------- |
+| **Patient** | http://localhost:5173 | Register via Sign Up page                                               |
+| **Admin**   | http://localhost:5174 | Email & password from `backend/.env` (`ADMIN_EMAIL` / `ADMIN_PASSWORD`) |
+| **Doctor**  | http://localhost:5174 | Login with credentials set by Admin when adding a doctor                |
 
 ---
 
 ## 🌐 Getting External Service Credentials
 
 ### MongoDB Atlas (Free Cloud DB)
+
 1. Go to [cloud.mongodb.com](https://cloud.mongodb.com) → Create free cluster
 2. Click **Connect** → **Drivers** → Copy the connection string
 3. Replace `<password>` in the URI and paste into `backend/.env`
 
 ### Cloudinary (Free Image Hosting)
+
 1. Sign up at [cloudinary.com](https://cloudinary.com)
 2. Go to **Dashboard** — copy **Cloud Name**, **API Key**, and **API Secret**
 3. Paste into `backend/.env`
 
 ### Razorpay (Optional — Payments)
+
 1. Sign up at [razorpay.com](https://razorpay.com)
 2. Go to **Settings → API Keys** → Generate key
 3. Paste `Key ID` and `Key Secret` into `backend/.env`
@@ -186,22 +189,30 @@ Admin panel runs at **http://localhost:5174**
 ## ⚠️ Common Issues & Fixes
 
 ### `JsonWebTokenError: invalid signature`
+
 Your browser has a stale login token from a previous session. Run this in the browser console on both `localhost:5173` and `localhost:5174`:
+
 ```js
-localStorage.clear(); location.reload();
+localStorage.clear();
+location.reload();
 ```
+
 Then log in again.
 
 ### `Error adding doctor: Unknown API key 'your_key'`
+
 Cloudinary credentials are not set. Fill in `CLOUDINARY_NAME`, `CLOUDINARY_API_KEY`, and `CLOUDINARY_SECRET_KEY` in `backend/.env` with real values from your Cloudinary dashboard.
 
 ### `MongoParseError: Invalid scheme`
+
 `MONGODB_URI` is still the placeholder value. Replace it with your real MongoDB connection string (Atlas or local).
 
 ### `E11000 duplicate key error` on register
+
 The email you're trying to register already exists in the database. Use a different email or log in instead.
 
 ### Razorpay crash on backend start
+
 The backend will **not** crash if Razorpay keys are missing — it will only return an error when a payment is actually attempted. You can leave the Razorpay keys as placeholders if you don't need payments.
 
 ---
